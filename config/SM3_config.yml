@@ -1,0 +1,77 @@
+---
+# base path format: "foo\\bar\\test data"
+base_path: "C:\\Users\\dkane\\OneDrive - Presto Engineering\\Documents\\AMF\\Stress Migration Test 3\\Labview\\test data"
+#pkg: [CDIP28]
+    
+params:
+  CDIP28:
+    XG4 Res @ 1V (ohm):
+      hilim: 20
+      lolim: -20
+      sn_to_skip: &cdip28_sn_to_skip [] # sn to ignore for particular param
+      axis_type: linear
+    XG8 Res @ 1V (ohm):
+      hilim: 20
+      lolim: -20
+      sn_to_skip: *cdip28_sn_to_skip # sn to ignore for particular param
+      axis_type: linear
+    XGA Res @ 1V (ohm):
+      hilim: 20
+      lolim: -20
+      sn_to_skip: *cdip28_sn_to_skip # sn to ignore for particular param
+      axis_type: linear
+    XG5 Res @ 1V (ohm):
+      hilim: 20
+      lolim: -20
+      sn_to_skip: *cdip28_sn_to_skip # sn to ignore for particular param
+      axis_type: linear
+    XGB Res @ 1V (ohm):
+      hilim: 20
+      lolim: -20
+      sn_to_skip: *cdip28_sn_to_skip # sn to ignore for particular param
+      axis_type: linear
+    HTR Res @ 1V (ohm):
+      hilim: 20
+      lolim: -20
+      sn_to_skip: *cdip28_sn_to_skip # sn to ignore for particular param
+      axis_type: linear
+    MT1 Res @ 1V (ohm):
+      hilim: 20
+      lolim: -20
+      sn_to_skip: *cdip28_sn_to_skip # sn to ignore for particular param
+      axis_type: linear
+    MT2 Res @ 1V (ohm):
+      hilim: 20
+      lolim: -20
+      sn_to_skip: *cdip28_sn_to_skip # sn to ignore for particular param
+      axis_type: linear
+    PD1X Dark Current @ -2V (A):
+      hilim: 50
+      lolim: -50
+      sn_to_skip: *cdip28_sn_to_skip # sn to ignore for particular param
+      axis_type: log
+    XH7 Res @ 1V (ohm):
+      hilim: 20
+      lolim: -20
+      sn_to_skip: *cdip28_sn_to_skip # sn to ignore for particular param
+      axis_type: linear
+    XH6 Res @ 1V (ohm):
+      hilim: 20
+      lolim: -20
+      sn_to_skip: *cdip28_sn_to_skip # sn to ignore for particular param
+      axis_type: linear
+    XH3 Res @ 1V (ohm):
+      hilim: 20
+      lolim: -20
+      sn_to_skip: *cdip28_sn_to_skip # sn to ignore for particular param
+      axis_type: linear
+    XH2 Res @ 1V (ohm):
+      hilim: 20
+      lolim: -20
+      sn_to_skip: *cdip28_sn_to_skip # sn to ignore for particular param
+      axis_type: linear
+    MOD Dark Current @ -5V (A):
+      hilim: 50
+      lolim: -50
+      sn_to_skip: *cdip28_sn_to_skip # sn to ignore for particular param
+      axis_type: log
