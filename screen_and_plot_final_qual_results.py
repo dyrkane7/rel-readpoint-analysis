@@ -25,7 +25,7 @@ try:
 except ImportError:
     from yaml import Loader
 
-# Expected directory structure:
+# Expected source data directory structure:
 #      <base_path>\<stress>\<file_name>.csv
 # Files in subdirectory for each stress should share the same device and stress type
 #
@@ -39,22 +39,32 @@ except ImportError:
 #      ex. "56GPDL2_TO39_HTOL_168HR_Test_010523_083023.csv"
 #
 # User must specify the following:
-#   .yml device config file
+#   .yml device config filename
+#
+# This script assumes the .yml file is located in a subdirectory named '/config/' in the same directory as this script
         
 # ~~~~~~~~~~ User Config ~~~~~~~~~~ #
 
-# dev_config_fp = r"C:/Users/dkane/OneDrive - Presto Engineering/Documents/python_scripts/reliability readpoint analysis/config/56GPDL3_config.yml"
-dev_config_fp = r"C:/Users/dkane/OneDrive - Presto Engineering/Documents/python_scripts/reliability readpoint analysis/config/SM3_config.yml"
+# dev_config_fp = r"C:/Users/dkane/OneDrive - Presto Engineering/Documents/python_scripts/rel-readpoint-analysis/config/56GPDL2_config.yml"
+# dev_config_fp = r"C:/Users/dkane/OneDrive - Presto Engineering/Documents/python_scripts/rel-readpoint-analysis/config/SM3_config.yml"
+
+dev_config_fn = "SM3_config.yml"
+# dev_config_fn = "56GPDL2_config.yml"
 
 # ~~~~~~~~ End User Config ~~~~~~~~~ #
 
 # seperate excel file with plots for each combination of stress and package type
 # base path is directory path containing all 
 class device_data:  
-    def __init__(self, dev_config_fp):
+    def __init__(self, dev_config_fn):
         self.stress_options = ["HTOL", "THB", "TMCL", "DH", "HTS"]
-        with open(dev_config_fp, 'r') as file_obj:
-            self.config = yaml.load(file_obj, Loader)
+        
+        # parent_dir = os.path.dirpath(os.path.abspath(__file__))
+        # dev_config_dir = os.path.join(parent_dir, "config")
+        # with open(dev_config_fp, 'r') as file_obj:
+        #     self.config = yaml.load(file_obj, Loader)
+        
+        self.config = self.get_dev_config_from_yml_file(dev_config_fn)
         
         #debug start
         # print(self.config['params']['TO39']['T_ambient (C)']['hilim'])
@@ -83,6 +93,14 @@ class device_data:
         print(f"format_dst_data() execution time: {time.time() - start_time:.2f} seconds")
         print("Done")
         self.verify_src_params_match_config()
+    
+    def get_dev_config_from_yml_file(self, dev_config_fn):
+        parent_dir = os.path.dirname(os.path.abspath(__file__))
+        dev_config_dir = os.path.join(parent_dir, "config")
+        dev_config_fp = os.path.join(dev_config_dir, dev_config_fn)
+        print("dev_config_fp:", dev_config_fp)
+        with open(dev_config_fp, 'r') as file_obj:
+            return yaml.load(file_obj, Loader)
         
     # rp_dict = {tup:{rp:[rp_list], }, }
     def get_rp_dict(self):
@@ -457,7 +475,7 @@ def open_file_in_excel(fp):
     os.system(xlsx_fp)
 
 if __name__ == "__main__":
-    dev_data = device_data(dev_config_fp)
+    dev_data = device_data(dev_config_fn)
     # tup = ("56GPDL2", "TO39", "HTOL")
 
     for tup in dev_data.dst_data:
