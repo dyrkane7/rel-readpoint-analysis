@@ -9,6 +9,7 @@ import yaml
 import os
 import py7zr
 import glob
+import warnings
 
 fp = r"C:\Users\dkane\OneDrive - Presto Engineering\Documents\AMF\56G PD Quals\Lot #2\test data\HTOL\56GPDL2_TO39_HTOL_T0_Test_112122_154047.csv"
 
@@ -44,4 +45,4 @@ if __name__ == '__main__':
     # print(type(result))
     
     
-    print(int(0.999))
+    print(float('Nan'))
