@@ -49,9 +49,6 @@ except ImportError:
         
 # ~~~~~~~~~~ User Config ~~~~~~~~~~ #
 
-# dev_config_fp = r"C:/Users/dkane/OneDrive - Presto Engineering/Documents/python_scripts/rel-readpoint-analysis/config/56GPDL2_config.yml"
-# dev_config_fp = r"C:/Users/dkane/OneDrive - Presto Engineering/Documents/python_scripts/rel-readpoint-analysis/config/SM3_config.yml"
-
 # dev_config_fn = "SM3_config.yml"
 dev_config_fn = "56GPDL2_config.yml"
 
